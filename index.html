@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronóstico del Clima con Cadenas de Markov</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Cadenas de Markov para Pronóstico del Clima</h1>
+        
+        <h2>Estados del Clima</h2>
+        <div class="weather-states">
+            <div class="weather-state">
+                <img src="/api/placeholder/80/80" alt="Nublado" class="weather-icon" id="icon-NU">
+                <p><strong>NU</strong>: Nublado</p>
+            </div>
+            <div class="weather-state">
+                <img src="/api/placeholder/80/80" alt="Parcialmente nublado" class="weather-icon" id="icon-PN">
+                <p><strong>PN</strong>: Parcialmente nublado</p>
+            </div>
+            <div class="weather-state">
+                <img src="/api/placeholder/80/80" alt="Parcialmente soleado" class="weather-icon" id="icon-PS">
+                <p><strong>PS</strong>: Parcialmente soleado</p>
+            </div>
+            <div class="weather-state">
+                <img src="/api/placeholder/80/80" alt="Soleado" class="weather-icon" id="icon-SO">
+                <p><strong>SO</strong>: Soleado</p>
+            </div>
+        </div>
+        
+        <div class="control-section">
+            <h2>Configuración</h2>
+            <div>
+                <label for="days-input">Número de días a analizar (20-40): </label>
+                <input type="number" id="days-input" min="20" max="40" value="30">
+                <button id="generate-btn">Generar Historial</button>
+            </div>
+            
+            <div id="forecast-controls" class="hidden">
+                <label for="forecast-days">Días a pronosticar: </label>
+                <input type="number" id="forecast-days" min="1" max="14" value="5">
+                <button id="forecast-btn">Generar Pronóstico</button>
+            </div>
+        </div>
+        
+        <div id="loader" class="loader hidden"></div>
+        
+        <div id="history-section" class="result-section hidden">
+            <h2>Historial del Clima</h2>
+            <div id="history-display"></div>
+        </div>
+        
+        <div id="matrix-section" class="result-section hidden">
+            <h2>Matriz de Transición</h2>
+            <div class="matrix-container">
+                <table id="transition-matrix"></table>
+            </div>
+        </div>
+        
+        <div id="forecast-section" class="result-section hidden">
+            <h2>Pronóstico</h2>
+            <div id="forecast-display"></div>
+        </div>
+        
+        <div id="long-term-section" class="result-section hidden">
+            <h2>Pronóstico a Largo Plazo</h2>
+            <div id="long-term-display"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
